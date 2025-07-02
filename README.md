@@ -128,21 +128,3 @@ curl -X POST http://localhost:2000/shorten \
 ```bash
 curl http://localhost:2000/stats/abc123
 ```
-
-## Cấu trúc Database
-
-Bảng `url_mappings`:
-
-| Field     | Type         | Description                |
-|-----------|--------------|----------------------------|
-| id        | uint         | Primary key (auto increment) |
-| long_url  | varchar(512) | URL gốc (có unique index)  |
-| short_code| varchar(32)  | Mã ngắn (có unique index)  |
-| created_at| timestamp    | Thời gian tạo              |
-| clicks    | int          | Số lượt click              |
-
-## Tính năng đặc biệt
-
-- **Tránh trùng lặp**: Nếu URL đã được rút gọn trước đó, hệ thống sẽ trả về URL ngắn cũ
-- **Mã ngẫu nhiên**: Sử dụng 6 ký tự ngẫu nhiên (a-z, A-Z, 0-9) cho mã ngắn
-- **Theo dõi clicks**: Tự động đếm số lượt truy cập cho mỗi URL
